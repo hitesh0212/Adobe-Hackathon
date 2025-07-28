@@ -3,9 +3,17 @@
 Persona-Driven Document Intelligence for Adobe Hackathon Round 1B
 Extracts and ranks relevant sections based on persona and job-to-be-done
 """
+import os
+os.environ['NLTK_DATA'] = '/usr/local/nltk_data'
+
+import nltk
+from nltk.tokenize import sent_tokenize
+
+nltk.data.path.append("/usr/local/nltk_data")
+
+
 
 import json
-import os
 import re
 import sys
 from datetime import datetime
@@ -14,20 +22,12 @@ import fitz  # PyMuPDF
 import numpy as np
 from sentence_transformers import SentenceTransformer
 from sklearn.metrics.pairwise import cosine_similarity
-import nltk
-from nltk.tokenize import sent_tokenize, word_tokenize
 import logging
-
-# Download NLTK data
-try:
-    nltk.data.find('tokenizers/punkt')
-except LookupError:
-    nltk.download('punkt', quiet=True)
 
 class DocumentIntelligence:
     def __init__(self):
         # Use a small, efficient model that fits within constraints
-        self.model = SentenceTransformer('/app/model')
+        self.model = SentenceTransformer('all-MiniLM-L6-v2')
         logging.basicConfig(level=logging.INFO)
         self.logger = logging.getLogger(__name__)
     
@@ -163,7 +163,7 @@ class DocumentIntelligence:
         job_to_be_done = config["job_to_be_done"]
         
         # Create embeddings for persona and job
-        persona_text = f"{persona['role']} {persona['expertise']} {persona['focus_areas']}"
+        persona_text = f"{persona}"
         persona_embedding = self.model.encode(persona_text)
         job_embedding = self.model.encode(job_to_be_done)
         
