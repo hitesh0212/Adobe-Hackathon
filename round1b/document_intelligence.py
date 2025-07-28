@@ -27,7 +27,7 @@ except LookupError:
 class DocumentIntelligence:
     def __init__(self):
         # Use a small, efficient model that fits within constraints
-        self.model = SentenceTransformer('all-MiniLM-L6-v2')
+        self.model = SentenceTransformer('/app/model')
         logging.basicConfig(level=logging.INFO)
         self.logger = logging.getLogger(__name__)
     

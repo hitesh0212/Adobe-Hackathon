@@ -10,8 +10,10 @@ Extracts structured outlines (Title, H1, H2, H3) from PDF documents using advanc
 ## Round 1B: Persona-Driven Document Intelligence  
 Intelligently extracts and ranks document sections based on user personas and their specific tasks.
 
-### Team Members
-- [Your Name]
+### Team Adobe ke Cuties 
+- Hitesh mehta
+- Adtiya Pratap Singh
+- Prashant Kaushik
 
 ### Repository Structure
 ```

@@ -15,10 +15,7 @@ WORKDIR /app
 COPY requirements.txt .
 
 # Install Python dependencies
-RUN pip install --no-cache-dir -r requirements.txt
-
-# Download the model during build to avoid runtime download
-RUN python -c "from sentence_transformers import SentenceTransformer; model = SentenceTransformer('all-MiniLM-L6-v2'); model.save('/app/model')"
+RUN pip install --default-timeout=300 --no-cache-dir -r requirements.txt
 
 # Download NLTK data
 RUN python -c "import nltk; nltk.download('punkt')"

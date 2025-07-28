@@ -1,0 +1,5 @@
+{
+  "documents": ["1.pdf", "2.pdf", "3.pdf"],
+  "persona": "PhD Researcher in Computational Biology",
+  "job_to_be_done": "Prepare a comprehensive literature review focusing on methodologies, datasets, and performance benchmarks used for brain tumor classification or detection."
+}
